@@ -151,7 +151,7 @@ impl<'a, 'b> PartialEq<&'b str> for Value<'a> {
 }
 
 
-impl<'a, 'b> PartialEq<Value<'b>> for &'a str {
+impl<'b> PartialEq<Value<'b>> for &str {
     #[inline]
     fn eq(&self, other: &Value<'b>) -> bool {
         other == self

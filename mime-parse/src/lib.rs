@@ -117,7 +117,7 @@ impl fmt::Display for ParseError {
 impl Mime {
     #[inline]
     pub const fn type_(&self) -> &str {
-        &self.source.const_as_ref().split_at(self.slash as usize).0
+        self.source.const_as_ref().split_at(self.slash as usize).0
     }
 
     #[inline]
@@ -223,7 +223,7 @@ impl Mime {
     }
 
     pub const fn essence(&self) -> &str {
-        &self.source.const_as_ref().split_at(self.semicolon_or_end()).0
+        self.source.const_as_ref().split_at(self.semicolon_or_end()).0
     }
 
     #[doc(hidden)]
@@ -272,7 +272,7 @@ impl fmt::Display for Mime {
 
 #[inline]
 const fn as_u16(i: usize) -> u16 {
-    debug_assert!(i <= std::u16::MAX as usize, "as_u16 overflow");
+    debug_assert!(i <= u16::MAX as usize, "as_u16 overflow");
     i as u16
 }
 
@@ -414,19 +414,19 @@ mod sealed {
 
 pub trait Parse: Sealed {}
 
-impl<'a> Sealed for &'a str {
+impl Sealed for &str {
     fn as_str(&self) -> &str {
         self
     }
 }
 
-impl<'a> Parse for &'a str {}
+impl Parse for &str {}
 
-impl<'a> Sealed for &'a String {
+impl Sealed for &String {
     fn as_str(&self) -> &str {
-        *self
+        self
     }
 }
 
-impl<'a> Parse for &'a String {}
+impl Parse for &String {}
 

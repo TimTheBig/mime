@@ -260,7 +260,7 @@ impl<'a> PartialEq<&'a str> for MediaRange {
     }
 }
 
-impl<'a> PartialEq<MediaRange> for &'a str {
+impl PartialEq<MediaRange> for &str {
     #[inline]
     fn eq(&self, mr: &MediaRange) -> bool {
         mr == self
