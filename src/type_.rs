@@ -223,14 +223,14 @@ impl PartialEq<str> for MediaType {
     }
 }
 
-impl<'a> PartialEq<&'a str> for MediaType {
+impl PartialEq<&str> for MediaType {
     #[inline]
-    fn eq(&self, s: & &'a str) -> bool {
+    fn eq(&self, s: & &str) -> bool {
         self == *s
     }
 }
 
-impl<'a> PartialEq<MediaType> for &'a str {
+impl PartialEq<MediaType> for &str {
     #[inline]
     fn eq(&self, mt: &MediaType) -> bool {
         mt == self
