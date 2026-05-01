@@ -209,6 +209,18 @@ impl MediaType {
     pub(super) fn test_assert_asterisks(&self) {
         assert!(!self.as_ref().contains('*'), "{:?} contains an asterisk", self);
     }
+
+    /// Converts this type into a shared string slice reference
+    #[doc(alias = "as_ref")]
+    pub const fn const_as_ref(&self) -> &str {
+        self.mime.const_as_ref()
+    }
+}
+
+impl AsRef<str> for MediaType {
+    fn as_ref(&self) -> &str {
+        self.const_as_ref()
+    }
 }
 
 impl PartialEq for MediaType {
@@ -249,12 +261,6 @@ impl FromStr for MediaType {
 
     fn from_str(s: &str) -> Result<MediaType, Self::Err> {
         MediaType::parse(s)
-    }
-}
-
-impl AsRef<str> for MediaType {
-    fn as_ref(&self) -> &str {
-        self.mime.as_ref()
     }
 }
 
