@@ -85,7 +85,7 @@ impl MediaType {
     /// assert_eq!(mime.type_(), mime::TEXT);
     /// ```
     #[inline]
-    pub fn type_(&self) -> &str {
+    pub const fn type_(&self) -> &str {
         self.mime.type_()
     }
 
@@ -180,7 +180,7 @@ impl MediaType {
     /// assert_eq!(plain_text_utf8.has_params(), true);
     /// ```
     #[inline]
-    pub fn has_params(&self) -> bool {
+    pub const fn has_params(&self) -> bool {
         self.mime.has_params()
     }
 

@@ -68,7 +68,7 @@ impl MediaRange {
     /// assert_eq!(range.type_(), mime::TEXT);
     /// ```
     #[inline]
-    pub fn type_(&self) -> &str {
+    pub const fn type_(&self) -> &str {
         self.mime.type_()
     }
 
@@ -215,7 +215,7 @@ impl MediaRange {
     /// assert_eq!(plain_text_utf8.has_params(), true);
     /// ```
     #[inline]
-    pub fn has_params(&self) -> bool {
+    pub const fn has_params(&self) -> bool {
         self.mime.has_params()
     }
 

@@ -314,11 +314,11 @@ static TOKEN_MAP: [bool; 256] = byte_map![
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
 
-fn is_token(c: u8) -> bool {
+const fn is_token(c: u8) -> bool {
     TOKEN_MAP[c as usize]
 }
 
-fn is_restricted_quoted_char(c: u8) -> bool {
+const fn is_restricted_quoted_char(c: u8) -> bool {
     c == 9 || (c > 31 && c != 127)
 }
 
